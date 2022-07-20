@@ -6,13 +6,14 @@ using UnityEngine.InputSystem;
 public class PlayerHandler : MonoBehaviour
 {
     [SerializeField] Rigidbody currentBody; //assicurarsi che il rigidbody non ruoti e sia bloccato su y e z
+    [SerializeField] float moveVelocity;
     Camera mainCamera;
+    bool isDragging;
 
     void Start()
     {
         mainCamera = Camera.main;
         currentBody = GetComponentInChildren<Rigidbody>();
-        currentBody.constraints = RigidbodyConstraints.None;
     }
 
     void Update()
@@ -23,13 +24,20 @@ public class PlayerHandler : MonoBehaviour
             return; 
         }
 
-        if(Touchscreen.current.primaryTouch.press.isPressed)
+        if(!Touchscreen.current.primaryTouch.press.isPressed)
         {
-            Move();
+            if(isDragging)
+            {
+                currentBody.isKinematic = false;
+            }
+
+            isDragging = false;
+            return;
         }
         else
         {
-            currentBody.isKinematic = false;
+            isDragging = true;
+            Move();
         }
     }
 
@@ -37,8 +45,8 @@ public class PlayerHandler : MonoBehaviour
     {
         currentBody.isKinematic = true;
         Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
-        //Il Player si deve muovere in base alla posizione del dito sullo schermo
         Vector3 worldPos = mainCamera.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, mainCamera.nearClipPlane));
-        transform.position = new Vector3(Mathf.Lerp(transform.position.x, worldPos.x, Time.deltaTime * 10.0f), 0.0f, 0.0f);
+        float distanceAdjuster = mainCamera.fieldOfView * -mainCamera.transform.position.z;
+        currentBody.position = new Vector3(Mathf.Lerp(transform.position.x, worldPos.x * distanceAdjuster, Time.deltaTime * moveVelocity), currentBody.position.y, currentBody.position.z);
     }
 }
