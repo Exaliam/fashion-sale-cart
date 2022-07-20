@@ -19,8 +19,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [Header("Game")]
     public GameState State;
+    [SerializeField] GameObject playerPrefab;
+    Camera mainCamera;
 
+    [Header("Debug")]
     [SerializeField] int stack = 0;
     [SerializeField] int money = 100;
 
@@ -33,6 +37,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Start");
         UpdateGameState(GameState.playing);
+        mainCamera = Camera.main;
+        SpawnPlayer();
     }
 
     public void UpdateGameState(GameState newState) 
@@ -60,6 +66,11 @@ public class GameManager : MonoBehaviour
                 Debug.LogError("Error 002: Game State out of range");
                 break;
         }
+    }
+
+    void SpawnPlayer()
+    {
+        GameObject playerInstance = Instantiate(playerPrefab, transform.position, Quaternion.identity);
     }
 }
 
