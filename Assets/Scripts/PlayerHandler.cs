@@ -12,6 +12,7 @@ public class PlayerHandler : MonoBehaviour
     {
         mainCamera = Camera.main;
         currentBody = GetComponentInChildren<Rigidbody>();
+        currentBody.constraints = RigidbodyConstraints.None;
     }
 
     void Update()
@@ -36,8 +37,8 @@ public class PlayerHandler : MonoBehaviour
     {
         currentBody.isKinematic = true;
         Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
-        //Il Player si deve muovere in base alla posizione del dito sullo schermo, ma lo script sotto non è giusto
-        //Vector3 worldPos = mainCamera.ScreenToWorldPoint(touchPos);
-        //currentBody.position = worldPos;
+        //Il Player si deve muovere in base alla posizione del dito sullo schermo
+        Vector3 worldPos = mainCamera.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, mainCamera.nearClipPlane));
+        transform.position = new Vector3(Mathf.Lerp(transform.position.x, worldPos.x, Time.deltaTime * 10.0f), 0.0f, 0.0f);
     }
 }
