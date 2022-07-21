@@ -187,6 +187,7 @@ MonoBehaviour:
   ground: {fileID: 1205278383}
   stack: 0
   money: 100
+  groundSpeed: 5
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

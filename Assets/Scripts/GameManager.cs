@@ -23,11 +23,13 @@ public class GameManager : MonoBehaviour
     public GameState State;
     [SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject ground;
-    bool moveGround;
 
-    [Header("Debug")]
+    [Header("Debug")] //these values actually must be set by code every scene
     [SerializeField] int stack = 0;
     [SerializeField] int money = 100;
+    [SerializeField] [Range(5.0f, 15.0f)] float groundSpeed; 
+
+    bool moveGround;
 
     void Awake()
     {
@@ -84,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     void MoveGround()
     {
-        
+        ground.transform.position += new Vector3(0, 0, -groundSpeed * Time.deltaTime);
     }
 }
 
