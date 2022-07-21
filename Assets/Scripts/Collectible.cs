@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    [SerializeField] float rotationSpeed; //da togliere dall'editor appena troviamo la giusta velocità
+    float rotationSpeed = 10f;
     GameObject parent; //settare come parent il ground che spawnerà questo oggetto
 
-    void FixedUpdate()
+    void Update()
     {
-        //se il gioco è in play
         Rotate();
     }
 

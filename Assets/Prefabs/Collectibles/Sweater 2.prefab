@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4447153870090718332}
   - component: {fileID: -72605122129936527}
   m_Layer: 0
-  m_Name: Sweater 1
+  m_Name: Sweater 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -471707993523854542, guid: 76b6cf893eefd054da508efecaaa1f0b, type: 3}
+  - {fileID: 2100000, guid: 0fbe92799c11b784e96a64bfaed73033, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,4 +110,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291bb01b7a53d6440a978cb331355e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 10
