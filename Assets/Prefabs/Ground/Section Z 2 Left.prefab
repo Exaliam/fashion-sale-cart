@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1434435025001999421}
   m_Layer: 0
-  m_Name: Ground 2 Left
+  m_Name: Section Z 2 Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

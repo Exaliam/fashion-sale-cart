@@ -16,7 +16,7 @@ public class PlayerHandler : MonoBehaviour
         currentBody = GetComponentInChildren<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(currentBody == null)
         {
@@ -46,7 +46,7 @@ public class PlayerHandler : MonoBehaviour
         currentBody.isKinematic = true;
         Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
         Vector3 worldPos = mainCamera.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, mainCamera.nearClipPlane));
-        float distanceAdjuster = mainCamera.fieldOfView * -mainCamera.transform.position.z;
+        float distanceAdjuster = mainCamera.fieldOfView * 2.1f;
         currentBody.position = new Vector3(Mathf.Lerp(transform.position.x, worldPos.x * distanceAdjuster, Time.deltaTime * moveVelocity), currentBody.position.y, currentBody.position.z);
     }
 }
