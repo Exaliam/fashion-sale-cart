@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2260f6efd3b8efe46a0a438c6aa3bfc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cart: {fileID: 2903858610057389424}
   currentBody: {fileID: 0}
   moveVelocity: 10
 --- !u!65 &7580743443731254702
@@ -424,6 +425,7 @@ GameObject:
   - component: {fileID: 2343071231251391687}
   - component: {fileID: 1669596636959091554}
   - component: {fileID: 3517150790113484712}
+  - component: {fileID: 2903858610057389424}
   m_Layer: 0
   m_Name: Cart
   m_TagString: Untagged
@@ -448,6 +450,7 @@ Transform:
   - {fileID: 8049818285413247396}
   - {fileID: 6187084763940687121}
   - {fileID: 6928559587977477056}
+  - {fileID: 8618862167285985141}
   m_Father: {fileID: 489463791313155498}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
@@ -501,6 +504,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2903858610057389424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3156902884224630397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f573e01f9c0093d46920d34f046ecc54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stack: {fileID: 8618862167285985141}
+  stackedClothes: []
+  clothesPrefab: {fileID: 1183329378728025387, guid: e3754076980c87740b97c08c9c60f190, type: 3}
 --- !u!1 &3890854762415215068
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,6 +603,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6063294377311524388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8618862167285985141}
+  m_Layer: 0
+  m_Name: Stack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8618862167285985141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063294377311524388}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.006}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2343071231251391687}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6746132939812686643
 GameObject:
   m_ObjectHideFlags: 0

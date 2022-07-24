@@ -5,8 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerHandler : MonoBehaviour
 {
+    [SerializeField] CartHandler cart;
     [SerializeField] Rigidbody currentBody; //assicurarsi che il rigidbody non ruoti e sia bloccato su y e z
     [SerializeField] float moveVelocity;
+
     Camera mainCamera;
     bool isDragging;
 
@@ -63,6 +65,14 @@ public class PlayerHandler : MonoBehaviour
         {
             GameManager.Instance.UpdateGameState(GameState.victory);
         }
+        else if(other.tag == "Enemy")
+        {
+            //enemy steal clothes
+        }
+        else if(other.tag == "Rack")
+        {
+            //hurting racks let you lose the game
+        }
         else
         {
             Debug.LogError("Error 004: no tag detected for " + other.name + " object");
@@ -74,7 +84,7 @@ public class PlayerHandler : MonoBehaviour
         currentBody.isKinematic = true;
         Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
         Vector3 worldPos = mainCamera.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, mainCamera.nearClipPlane));
-        float distanceAdjuster = mainCamera.fieldOfView * 2.1f;
+        float distanceAdjuster = mainCamera.fieldOfView;
         currentBody.position = new Vector3(Mathf.Lerp(transform.position.x, worldPos.x * distanceAdjuster, Time.deltaTime * moveVelocity), currentBody.position.y, currentBody.position.z);
     }
 
@@ -91,6 +101,7 @@ public class PlayerHandler : MonoBehaviour
         Renderer rend = clothes.GetComponent<Renderer>();
         Color clothesColor = rend.material.color;
         GameManager.Instance.StackClothes(clothesColor, coinValue);
+        cart.GetClothesInCart(clothesColor);
         Destroy(clothes);
     }
 }
