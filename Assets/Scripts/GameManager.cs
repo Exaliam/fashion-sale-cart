@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
 
     void SpawnPlayer()
     {
-        GameObject playerInstance = Instantiate(playerPrefab, transform.position, Quaternion.identity);
+        GameObject playerInstance = Instantiate(playerPrefab, transform.position, Quaternion.Euler(0, 180, 0));
     }
 
     void MoveGround()

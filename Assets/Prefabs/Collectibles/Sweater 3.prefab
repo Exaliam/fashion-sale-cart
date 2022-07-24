@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4447153870090718332}
   - component: {fileID: -72605122129936527}
   m_Layer: 0
-  m_Name: Sweater 1
+  m_Name: Sweater 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 600c26c3f4c247d488a516085b5fc482, type: 2}
+  - {fileID: 2100000, guid: b90b0eb51ba6795459ca4c73192cc2f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

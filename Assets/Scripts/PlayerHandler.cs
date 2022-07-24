@@ -13,7 +13,7 @@ public class PlayerHandler : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        currentBody = GetComponentInChildren<Rigidbody>();
+        currentBody = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
