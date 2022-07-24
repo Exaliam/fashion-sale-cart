@@ -79,6 +79,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void CollectCoin(int coinValue)
+    {
+        money += coinValue;
+        Debug.Log("Added " + coinValue + " coins, now your budget is " + money + " coins");
+    }
+
+    public void StackClothes(Color clothesColor, int coinValue)
+    {
+        stack++;
+        money -= coinValue;
+        Debug.Log("Added item to stack, now there are " + stack + " clothes in your cart");
+        Debug.Log("Your purchase costs " + coinValue + " coins; there are " + money + " coins left in your wallet");
+        //Create a function that stacks visually clothes inside the cart
+    }
+
     void SpawnPlayer()
     {
         GameObject playerInstance = Instantiate(playerPrefab, transform.position, Quaternion.Euler(0, 180, 0));
@@ -88,10 +103,13 @@ public class GameManager : MonoBehaviour
     {
         ground.transform.position += new Vector3(0, 0, -groundSpeed * Time.deltaTime);
     }
+    
 
     void WinGame()
     {
         Debug.Log("Victory");
+        Debug.Log("Products purchased:" + stack);
+        Debug.Log("Coins left:" + money);
     }
 }
 

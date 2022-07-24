@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
+    public int coinValue;
+
     float rotationSpeed = 10f;
     GameObject parent; //settare come parent il ground che spawnerà questo oggetto
 
@@ -14,6 +16,6 @@ public class Collectible : MonoBehaviour
 
     void Rotate()
     {
-        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
     }
 }

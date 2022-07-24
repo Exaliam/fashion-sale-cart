@@ -43,9 +43,29 @@ public class PlayerHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if(other.tag == "Finish")
+        if(other.tag == "Collectible" || other.tag == "Coin")
+        {
+            GameObject collectible = other.gameObject;
+
+            switch(other.tag)
+            {
+            case "Coin":
+                CollectCoin(collectible);
+                break;
+            case "Collectible":
+                CollectClothes(collectible);
+                break;
+            default:
+                break;
+            }
+        }
+        else if(other.tag == "Finish")
         {
             GameManager.Instance.UpdateGameState(GameState.victory);
+        }
+        else
+        {
+            Debug.LogError("Error 004: no tag detected for " + other.name + " object");
         }
     }
 
@@ -56,5 +76,21 @@ public class PlayerHandler : MonoBehaviour
         Vector3 worldPos = mainCamera.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, mainCamera.nearClipPlane));
         float distanceAdjuster = mainCamera.fieldOfView * 2.1f;
         currentBody.position = new Vector3(Mathf.Lerp(transform.position.x, worldPos.x * distanceAdjuster, Time.deltaTime * moveVelocity), currentBody.position.y, currentBody.position.z);
+    }
+
+    void CollectCoin(GameObject coin)
+    {
+        int coinValue = coin.GetComponent<Collectible>().coinValue;
+        GameManager.Instance.CollectCoin(coinValue);
+        Destroy(coin.gameObject);
+    }
+
+    void CollectClothes(GameObject clothes)
+    {
+        int coinValue = clothes.GetComponent<Collectible>().coinValue;
+        Renderer rend = clothes.GetComponent<Renderer>();
+        Color clothesColor = rend.material.color;
+        GameManager.Instance.StackClothes(clothesColor, coinValue);
+        Destroy(clothes);
     }
 }
