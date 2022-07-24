@@ -41,6 +41,14 @@ public class PlayerHandler : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(other.tag == "Finish")
+        {
+            GameManager.Instance.UpdateGameState(GameState.victory);
+        }
+    }
+
     void Move()
     {
         currentBody.isKinematic = true;

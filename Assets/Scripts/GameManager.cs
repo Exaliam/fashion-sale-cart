@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Start");
         UpdateGameState(GameState.playing);
         SpawnPlayer();
     }
@@ -71,6 +70,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.victory:
                 moveGround = false;
+                WinGame();
                 break;
             default:
                 moveGround = false;
@@ -87,6 +87,11 @@ public class GameManager : MonoBehaviour
     void MoveGround()
     {
         ground.transform.position += new Vector3(0, 0, -groundSpeed * Time.deltaTime);
+    }
+
+    void WinGame()
+    {
+        Debug.Log("Victory");
     }
 }
 
